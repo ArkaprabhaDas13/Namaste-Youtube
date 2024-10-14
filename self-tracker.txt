@@ -1,0 +1,7 @@
+implemented the basic design
+
+installed redux
+
+hamburger menu linked with redux
+
+implemented the opening and closing of the sidebar in Body.jsx
