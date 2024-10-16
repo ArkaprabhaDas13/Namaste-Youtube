@@ -6,11 +6,11 @@ const ButtonList = () => {
   let arr = ['live', 'shorts', 'music', 'gaming', 'sports']
 
   return (
-    <div className='flex justify-between'>
+    <div className='flex '>
 
       {
-        arr.map((item)=>(
-          <Button text={item}/>
+        arr.map((item, index)=>(
+          <Button text={item} key={index}/>
         ))
       }
 

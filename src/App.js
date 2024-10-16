@@ -2,8 +2,30 @@ import { Provider } from 'react-redux';
 import './App.css';
 import Head from './components/Head';
 import Body from './components/Body';
+import MainContainer from './components/MainContainer';
+import Watch from './components/Watch';
 import store from './utils/store'
 import { useSelector } from 'react-redux';
+import {createBrowserRouter, RouterProvider, Route, Link} from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Body />,
+    children: [
+      {
+        path: '/',
+        element: <MainContainer/>,
+      },
+      {
+        // path: '/watch/:videoId',
+        path: '/watch',
+        element: <Watch />,
+      }
+    ]
+  }
+])
+
 
 function App() {
 
@@ -14,7 +36,7 @@ function App() {
       <div className="App">
         
         <Head/>
-        <Body/>
+        <RouterProvider router={router}/>
 
       </div>
 

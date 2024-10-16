@@ -1,25 +1,24 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { toggleMenu } from '../utils/appSlice'
-import { useDispatch } from 'react-redux'
+import {toggleMenu} from '../utils/appSlice'
+import {useDispatch} from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Head = () => {
   
   const toggle = useSelector(store=>store.app?.isMenuOpen)
   
   const dispatch = useDispatch();
-
-  console.log(toggle)
   
-  // const toggleMenuHandler = ()=>{
-  //   dispatch(toggleMenu())
-  // }
+  const toggleHandler = ()=>{
+    dispatch(toggleMenu())
+  }
 
   return (
     <div className='grid grid-flow-col p-4'>
 
         <div className='flex col-span-1'>
-            <img onClick={()=>dispatch(toggleMenu())} className='h-8 cursor-pointer' src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-4.png" alt="hamburger menu icon" />
+            <img onClick={()=>toggleHandler()} className='h-8 cursor-pointer' src="https://icons.veryicon.com/png/o/miscellaneous/linear-icon-45/hamburger-menu-4.png" alt="hamburger menu icon" />
             <img className='h-8 mx-3' src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1024px-Logo_of_YouTube_%282015-2017%29.svg.png" alt="Youtube logo" />
         </div>
 
