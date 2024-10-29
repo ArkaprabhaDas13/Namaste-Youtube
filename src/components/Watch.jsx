@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { closeMenu } from '../utils/appSlice';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import CommentsContainer from './CommentsContainer';
+import LiveChat from './LiveChat';
 // import {useParams} from 'react-router-dom'
 
 
@@ -27,9 +29,19 @@ const Watch = () => {
 
   
   return (
-    <div className='w-screen h-screen'>
+    <div className='w-screen h-screen m-10'>
+      
+      <div className='flex flex-row'>
+        <div className=''>
+          <iframe className='rounded-xl' frame width="850px" height="500px" src={`https://www.youtube.com/embed/${watchParam}?si=XbnE396wyCsG0UA5?autoplay=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
 
-      <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${watchParam}?si=XbnE396wyCsG0UA5?autoplay=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <LiveChat/>
+      </div>
+
+      <div>
+        <CommentsContainer />
+      </div>
 
     </div>
   )

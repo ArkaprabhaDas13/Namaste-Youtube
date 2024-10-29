@@ -14,19 +14,19 @@ const Sidebar = () => {
         
         
         <ul>
-            <Link to='/'><h1 className=''>Home</h1></Link>
-            <h1 className=''>Shorts</h1>
-            <h1 className=''>Subscriptions</h1>
+            <Link to='/'><h1 className='font-bold mb-3'>Home</h1></Link>
+            <h1 className='font-bold mb-3'>Shorts</h1>
+            <h1 className='font-bold mb-3'>Channels</h1>
         </ul>
 
 
-        <h1 className='font-bold'>Subscriptions</h1>
+        <h1 className='font-bold mb-3'>Subscriptions</h1>
         
         <ul>
-            <li>Music</li>
-            <li>Sport</li>
-            <li>Gaming</li>
-            <li>Movies</li>
+            <li className='mb-3'>Music</li>
+            <li className='mb-3'>Sport</li>
+            <li className='mb-3'>Gaming</li>
+            <li className='mb-3'>Movies</li>
         </ul>
 
     </div>
