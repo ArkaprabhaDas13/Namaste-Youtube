@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { LIVE_CHAT_PAGINATION_VALUE } from "./constants";
 
 const chatSlice = createSlice({
    
@@ -27,8 +28,9 @@ const chatSlice = createSlice({
     },
 
     reducers: {
-        addChats: (state, action)=>{
-            state.chatArray = [...state.chatArray, action.payload]
+        addChat: (state, action)=>{
+            state.chatArray.splice(LIVE_CHAT_PAGINATION_VALUE);
+            state.chatArray = [action.payload, ...state.chatArray]
         },
 
         removeChats: (state)=>{
@@ -38,4 +40,4 @@ const chatSlice = createSlice({
 })
 
 export default chatSlice.reducer;
-export const {addChats, removeChats} = chatSlice.actions
+export const {addChat, removeChats} = chatSlice.actions

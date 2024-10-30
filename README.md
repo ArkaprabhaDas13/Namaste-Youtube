@@ -94,3 +94,5 @@ new Map();
 Short Polling from server for live chat
 
 Pagination/Data Retention Limit set for the live chats
+
+Faker.js for random UserNames 
