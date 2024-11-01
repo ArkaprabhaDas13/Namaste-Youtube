@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants'
 import clockIcon from '../utils/clockIcon.png'
 import { cacheResults } from '../utils/searchSlice'
+import { addKeyword } from '../utils/resultsSlice'
 
 
 const Head = () => {
@@ -15,13 +16,14 @@ const Head = () => {
    
   const toggle = useSelector(store => store.app?.isMenuOpen)
   const searchCache = useSelector(store=>store.search)      // we are caching the results of the previously searched items so that we do not have to make unnecessary API calls
-
+  const keyword = useSelector(store=>store.results?.keyword)
+  // console.log(keyword)
   
   const dispatch = useDispatch();
   
   
   useEffect(() => {
-    console.log("UseEffect called after ", searchQuery);
+    // console.log("UseEffect called after ", searchQuery);
     // DEBOUNCING:
     // make an API call after every key press but decline the API call if the difference between the 2 calls is <200ms
     const timer = setTimeout(() => {
@@ -50,8 +52,8 @@ const Head = () => {
     dispatch(cacheResults({[searchQuery] : suggestions_json[1]}))     //when you use square brackets [] to define a key in an object literal, it allows you to use the value of a variable as the key
   }
   
-  console.log(suggestionList)
-  console.log("SearchCache = ", searchCache)
+  // console.log(suggestionList)
+  // console.log("SearchCache = ", searchCache)
 
 
   const toggleHandler = () => {
@@ -60,6 +62,12 @@ const Head = () => {
 
   const handleInput = (event) => {
     setSearchQuery(event.target.value);
+  }
+
+  const handleSearch = ()=>{
+    console.log("SEARCH CLICKED !!!", searchQuery)
+    dispatch(addKeyword(searchQuery));
+    
   }
 
 
@@ -76,7 +84,7 @@ const Head = () => {
 
         <div className='col-span-10 text-center'>
           <input className='w-[80%] py-2 px-4 border border-gray-400 rounded-l-[30px]' type="text" value={searchQuery} onChange={handleInput} onBlur={() => setSuggestionOpen(false)} onFocus={() => setSuggestionOpen(true)} />
-          <button className='p-2 px-4 border border-gray-400 rounded-r-full bg-gray-50 hover:bg-slate-300'>Search</button>
+          <button className='p-2 px-4 border border-gray-400 rounded-r-full bg-gray-50 hover:bg-slate-300' onClick={handleSearch}>Search</button>
         </div>
 
         {suggestionOpen &&
