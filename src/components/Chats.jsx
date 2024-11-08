@@ -8,6 +8,8 @@ import {fakeName} from './faker'
 
 const Chats = () => {
 
+    console.log("COMPONENT UPDATED !!!!")
+
     const [chats, setChats] = useState();
     const [comment, setComment] = useState('');
 
@@ -38,7 +40,7 @@ const Chats = () => {
             clearInterval(i);
         }
 
-    }, [data])
+    }, [data])     //this data is kept as a dependency because every time a new comment is added, the entire component needs to update/rerender to show all the updated comments
 
   return (
     <div className=''>
